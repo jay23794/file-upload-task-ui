@@ -3,7 +3,7 @@ export async function uploadFileService(file) {
   formData.append("file", file);
 
   try {
-    const res = await fetch("http://localhost:9000/api/v1/file/upload", {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND}file/upload`, {
       method: "POST",
       body: formData,
     });
@@ -18,8 +18,9 @@ export async function uploadFileService(file) {
   }
 }
 export async function getUploadedFiles() {
+  
   try {
-    const res = await fetch("http://localhost:9000/api/v1/file/",{
+    const res = await fetch(`${import.meta.env.VITE_BACKEND}file/`,{
         method: "GET",
     });
    
@@ -32,7 +33,7 @@ export async function getUploadedFiles() {
 
 export async function getFileDetails(fileId) {
   try {
-    const res = await fetch(`http://localhost:9000/api/v1/file/analysis/${fileId}`);
+    const res = await fetch(`${import.meta.env.VITE_BACKEND}file/analysis/${fileId}`);
     return await res.json();
   } catch (err) {
     throw err;
